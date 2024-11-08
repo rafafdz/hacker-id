@@ -1,8 +1,8 @@
 {
-  "name": "supa-next-starter",
-  "description": "A production ready Next.js/Supabase starter. ",
+  "name": "hacker-vote",
+  "description": "a beautiful and minimalistic voting app for hackathons",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "author": "Michael Troya <hi@michaeltroya.ca> (@michaeltroya)",
   "license": "MIT",
   "keywords": [
