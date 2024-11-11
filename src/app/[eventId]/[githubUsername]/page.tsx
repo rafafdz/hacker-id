@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { FaGithub, FaLinkedin, FaVoteYea } from 'react-icons/fa'
 import { createClient } from '@supabase/supabase-js'
-import { Button } from '../../../components/Button'
+import { Button } from '@/components/Button'
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
