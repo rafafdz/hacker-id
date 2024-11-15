@@ -1,26 +1,9 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import { FaGithub, FaLinkedin, FaVoteYea } from 'react-icons/fa'
-import { createClient } from '@supabase/supabase-js'
+import { supabase } from '@/utils/supabase'
 import { Button } from '@/components/Button'
-
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SECRET!,
-)
-
-function buildUrl(base: string, username: string | null) {
-  if (username == null) {
-    return null
-  }
-
-  try {
-    const url = new URL(username, base)
-    return url.toString()
-  } catch (TypeError) {
-    return null
-  }
-}
+import { buildUrl } from '@/utils/buildUrl'
+import { GithubAvatar } from '@/components/GithubAvatar'
 
 export default async function ParticipantPage({
   params,
@@ -46,7 +29,6 @@ export default async function ParticipantPage({
   const { name, proyectId, linkedinUsername } = data[0]
 
   const githubProfileUrl = buildUrl('https://github.com/', githubUsername)
-  const githubAvatarUrl = githubProfileUrl + '.png'
   const linkedinProfileUrl = buildUrl(
     'https://linkedin.com/in/',
     linkedinUsername,
@@ -70,14 +52,7 @@ export default async function ParticipantPage({
   return (
     <section className="my-10 flex flex-col items-center gap-5">
       <header className="flex flex-col items-center">
-        <Image
-          className="rounded-full"
-          src={githubAvatarUrl}
-          unoptimized={true}
-          alt="test"
-          width={200}
-          height={200}
-        />
+        <GithubAvatar className="" username={githubUsername} size={200} />
         <h1 className="font-mono text-3xl">{name}</h1>
         <p className="font-mono text-xl">@{githubUsername}</p>
       </header>
