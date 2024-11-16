@@ -2,13 +2,13 @@ import Image from 'next/image'
 import { buildUrl } from '@/utils/buildUrl'
 
 export function GithubAvatar({
-  className = '',
   username,
-  size,
+  className = '',
+  size = 200,
 }: {
-  className: string
   username: string
-  size: number | undefined
+  className?: string
+  size?: number
 }) {
   const githubProfileUrl = buildUrl('https://github.com/', username)
   const githubAvatarUrl = githubProfileUrl + '.png'
@@ -17,7 +17,6 @@ export function GithubAvatar({
     <Image
       className={'rounded-full ' + className}
       src={githubAvatarUrl}
-      unoptimized={true}
       alt={'@' + username}
       width={size}
       height={size}
