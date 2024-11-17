@@ -1,4 +1,5 @@
 import { GeistSans } from 'geist/font/sans'
+import { Oxanium } from 'next/font/google'
 import ThemeProvider from '@/providers/ThemeProvider'
 import NextTopLoader from 'nextjs-toploader'
 import { Analytics } from '@vercel/analytics/react'
@@ -16,6 +17,11 @@ export const metadata = {
   description: 'The fastest way to build apps with Next.js and Supabase',
 }
 
+const oxanium = Oxanium({
+  subsets: ['latin'],
+  variable: '--font-oxanium',
+})
+
 export default function RootLayout({
   children,
 }: {
@@ -24,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={GeistSans.className}
+      className={GeistSans.className + ' ' + oxanium.variable}
       style={{ colorScheme: 'dark' }}
     >
       <body className="bg-background text-white">

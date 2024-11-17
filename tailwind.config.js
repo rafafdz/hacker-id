@@ -10,6 +10,9 @@ module.exports = {
       screens: { '2xl': '1400px' },
     },
     extend: {
+      fontFamily: {
+        mono: ['var(--font-oxanium)'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
