@@ -2,7 +2,10 @@ import { ImageResponse } from 'next/og'
 import { notFound } from 'next/navigation'
 import { supabase } from '@/utils/supabase'
 import { buildUrl } from '@/utils/buildUrl'
-import Image from 'next/image'
+
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000'
 
 export default async function ProfileImage({
   params,
@@ -30,7 +33,11 @@ export default async function ProfileImage({
   const { name } = data[0]
 
   const jsx = (
-    <article tw="h-full w-full flex flex-col bg-[#18181b] text-white items-center">
+    <article tw="h-full w-full flex flex-col bg-[#18181b] p-5 text-white items-center">
+      <img
+        tw="absolute opacity-10 top-10 right-5 h-140"
+        src={defaultUrl + '/banana.svg'}
+      />
       <section tw="px-20 grow flex items-center">
         <img
           tw="rounded-full object-scale-down"
