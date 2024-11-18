@@ -33,13 +33,8 @@ export default async function ProfileImage({
   }
 
   const { name, proyectId } = data[0]
-  const response = await fetch(
-    new URL('../../../../public/Oxanium.ttf', import.meta.url),
-  )
-  //const response = await fetch(new URL("/Oxanium.ttf"))
-  console.log(response)
+  const response = await fetch(new URL('Oxanium.ttf', import.meta.url))
   const oxanium = await response.arrayBuffer()
-  console.log(oxanium)
 
   const backgroundGradient = {
     backgroundImage: 'linear-gradient(to bottom right, #09090b, #18181b)',
