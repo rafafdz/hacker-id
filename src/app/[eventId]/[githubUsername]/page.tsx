@@ -50,7 +50,7 @@ export default async function ParticipantPage({
   ]
 
   return (
-    <section className="my-10 flex flex-col items-center gap-5">
+    <section className="flex flex-col items-center gap-5 rounded-[10%] border border-primary bg-foreground p-10">
       <header className="flex flex-col items-center">
         <GithubAvatar className="" username={githubUsername} size={200} />
         <h1 className="font-mono text-3xl">{name}</h1>
