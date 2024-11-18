@@ -30,7 +30,7 @@ export default async function ProfileImage({
     notFound()
   }
 
-  const { name } = data[0]
+  const { name, proyectId } = data[0]
 
   const jsx = (
     <article tw="h-full w-full flex flex-col bg-[#18181b] p-5 text-white items-center">
@@ -45,9 +45,14 @@ export default async function ProfileImage({
           width={400}
           height={400}
         />
-        <div tw="flex flex-col">
-          <h1 tw="text-8xl text-mono text-[#ffec40]">{name}</h1>
-          <p tw="text-mono text-4xl">{'@' + githubUsername}</p>
+        <div tw="flex flex-col grow">
+          <div tw="flex flex-col">
+            <h1 tw="text-7xl text-mono text-[#ffec40] text-ellipsis">{name}</h1>
+            <p tw="text-mono text-4xl text-ellipsis">{'@' + githubUsername}</p>
+          </div>
+          <h2 tw="font-mono text-8xl self-center text-ellipsis uppercase">
+            {proyectId}
+          </h2>
         </div>
       </section>
       <footer tw="text-center text-mono text-4xl">platanus hack</footer>
