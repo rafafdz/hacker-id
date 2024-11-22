@@ -1,4 +1,5 @@
 import { GeistSans } from 'geist/font/sans'
+import { Oxanium } from 'next/font/google'
 import ThemeProvider from '@/providers/ThemeProvider'
 import NextTopLoader from 'nextjs-toploader'
 import { Analytics } from '@vercel/analytics/react'
@@ -12,9 +13,14 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'Next.js and Supabase Starter Kit',
-  description: 'The fastest way to build apps with Next.js and Supabase',
+  title: 'platanus hack',
+  description: 'platanus hack',
 }
+
+const oxanium = Oxanium({
+  subsets: ['latin'],
+  variable: '--font-oxanium',
+})
 
 export default function RootLayout({
   children,
@@ -24,10 +30,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={GeistSans.className}
+      className={GeistSans.className + ' ' + oxanium.variable}
       style={{ colorScheme: 'dark' }}
     >
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-white">
         <NextTopLoader showSpinner={false} height={2} color="#2acf80" />
         <ThemeProvider
           attribute="class"

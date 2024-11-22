@@ -10,12 +10,15 @@ module.exports = {
       screens: { '2xl': '1400px' },
     },
     extend: {
+      fontFamily: {
+        mono: ['var(--font-oxanium)'],
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: '#09090b',
-        foreground: 'hsl(var(--foreground))',
+        foreground: '18181B',
         primary: {
           DEFAULT: '#ffec40',
           foreground: 'hsl(var(--primary-foreground))',
