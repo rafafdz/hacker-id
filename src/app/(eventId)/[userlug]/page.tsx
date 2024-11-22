@@ -59,6 +59,7 @@ export default async function ParticipantPage({
         <GithubAvatar className="" username={githubUsername} size={200} />
         <h1 className="font-mono text-3xl">{name}</h1>
         <p className="font-mono text-xl">@{githubUsername}</p>
+        {proyectId ? <p className="font-mono text-2xl">{proyectId}</p> : null}
       </header>
 
       <nav className="flex flex-col gap-2">
