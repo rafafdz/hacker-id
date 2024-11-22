@@ -15,7 +15,7 @@ export default async function ParticipantPage({
   const { data, error } = await supabase
     .from('Participant')
     .select()
-    .eq('slug', userlug.toLowerCase())
+    .eq('slug', userlug)
     .limit(1)
 
   if (error != null) {
