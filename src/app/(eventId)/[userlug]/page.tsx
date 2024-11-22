@@ -25,15 +25,14 @@ function buildUrl(base: string, username: string | null) {
 export default async function ParticipantPage({
   params,
 }: {
-  params: Promise<{ eventId: string; githubUsername: string }>
+  params: Promise<{ userlug: string }>
 }) {
-  const { eventId, githubUsername } = await params
+  const { userlug } = await params
 
   const { data, error } = await supabase
     .from('Participant')
     .select()
-    .eq('githubUsername', githubUsername.toLowerCase())
-    .eq('eventId', eventId)
+    .eq('slug', userlug.toLowerCase())
 
   if (error != null) {
     throw RangeError('Participante no encontrado')
@@ -43,7 +42,7 @@ export default async function ParticipantPage({
     notFound()
   }
 
-  const { name, proyectId, linkedinUsername } = data[0]
+  const { name, proyectId, linkedinUsername, githubUsername } = data[0]
 
   const githubProfileUrl = buildUrl('https://github.com/', githubUsername)
   const githubAvatarUrl = githubProfileUrl + '.png'
@@ -54,18 +53,22 @@ export default async function ParticipantPage({
   const projectUrl = buildUrl('https://vote.hack.platan.us/', proyectId)
 
   const buttonData = [
-    { text: 'Perfil de Github', icon: <FaGithub />, href: githubProfileUrl },
-    {
-      text: 'Perfil de LinkedIn',
-      icon: <FaLinkedin />,
-      href: linkedinProfileUrl,
-    },
+    githubUsername
+      ? { text: 'Perfil de Github', icon: <FaGithub />, href: githubProfileUrl }
+      : null,
+    linkedinProfileUrl
+      ? {
+          text: 'Perfil de LinkedIn',
+          icon: <FaLinkedin />,
+          href: linkedinProfileUrl,
+        }
+      : null,
     {
       text: 'Página de Proyecto',
       icon: <FaVoteYea />,
       href: projectUrl,
     },
-  ]
+  ].filter((data) => data !== null)
 
   return (
     <section className="my-10 flex flex-col items-center gap-5">
@@ -79,7 +82,7 @@ export default async function ParticipantPage({
           height={200}
         />
         <h1 className="font-mono text-3xl">{name}</h1>
-        <p className="font-mono text-xl">@{githubUsername}</p>
+        <p className="font-mono text-xl">@{userlug}</p>
       </header>
 
       <nav className="flex flex-col gap-2">

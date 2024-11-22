@@ -2,14 +2,10 @@ import Link from 'next/link'
 import { ReactNode } from 'react'
 
 export default async function EventLayout({
-  params,
   children,
 }: {
-  params: Promise<{ eventId: string }>
   children: ReactNode
 }) {
-  const { eventId } = await params
-
   return (
     <>
       <header className="m-3 items-center self-stretch sm:grid">
@@ -17,7 +13,7 @@ export default async function EventLayout({
           Platanus
         </Link>
         <h1 className="justify-self-center font-mono text-4xl">
-          Hackathon {eventId}
+          Platanus Hack
         </h1>
         <div className="" />
       </header>
